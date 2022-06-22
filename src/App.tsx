@@ -10,7 +10,7 @@ function App() {
       className={`${selectedTheme} min-h-screen bg-main px-6 grid place-items-center font-bold`}
     >
       <div className="w-full max-w-[33.75rem]">
-        <div className="flex justify-between items-center text-text2">
+        <div className="flex justify-between items-center text-text2 mb-8">
           <h1 className="text-[2rem]">calc</h1>
           <div className="flex items-end gap-6 text-xs">
             <p className="tracking-[1px] mb-1">THEME</p>
@@ -25,7 +25,7 @@ function App() {
                   (theme) => (
                     <label
                       htmlFor={theme}
-                      className="h-[1.125rem] w-[1.125rem] relative"
+                      className="h-[1.125rem] w-[1.125rem] relative cursor-pointer"
                     >
                       <input
                         className="invisible"
@@ -46,6 +46,11 @@ function App() {
             </div>
           </div>
         </div>
+
+        <input
+          className="text-[2.5rem] bg-screen text-text2 text-right rounded-lg px-5 py-6 w-full outline-none md:px-7 md:py-8 md:text-[3.5rem]"
+          type="number"
+        />
       </div>
     </main>
   );
