@@ -18,8 +18,8 @@
 
   /* text */
   --color-text1: 221 14% 31%;
-  --color-text2: 0 0 100%;
-  --color-text2: 0 0 100%;
+  --color-text2: 0 0% 100%;
+  --color-text2: 0 0% 100%;
 }
 
 .themeCreame {
@@ -38,8 +38,8 @@
 
   /* text */
   --color-text1: 60 10% 19%;
-  --color-text2: 0 0 100%;
-  --color-text2: 0 0 100%;
+  --color-text2: 0 0% 100%;
+  --color-text2: 0 0% 100%;
 }
 
 .themeViolet {
@@ -58,6 +58,6 @@
 
   /* text */
   --color-text1: 52 100% 62%;
-  --color-text2: 0 0 100%;
+  --color-text2: 0 0% 100%;
   --color-text3: 198 20% 13%;
 }
