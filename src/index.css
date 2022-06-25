@@ -9,17 +9,18 @@
   --color-screen: 224 36% 15%;
 
   /* keys */
-  --color-primary-key: 225 21% 49%;
-  --color-primary-key-shadow: 224 28% 35%;
-  --color-secondary-key: 6 63% 50%;
-  --color-secondary-key-shadow: 6 70% 34%;
-  --color-accent-key: 30 25% 89%;
-  --color-accent-key-shadow: 28 16% 65%;
+  --color-primary-key: 30 25% 89%;
+  --color-primary-key-shadow: 28 16% 65%;
+  --color-secondary-key: 225 21% 49%;
+  --color-secondary-key-shadow: 224 28% 35%;
+  --color-accent-key: 6 63% 50%;
+  --color-accent-key-shadow: 6 70% 34%;
 
   /* text */
-  --color-text1: 221 14% 31%;
-  --color-text2: 0 0% 100%;
-  --color-text2: 0 0% 100%;
+  --color-header-txt: 0 0% 100%;
+  --color-primary-txt: 221 14% 31%;
+  --color-secondary-txt: 0 0% 100%;
+  --color-accent-txt: 0 0% 100%;
 }
 
 .themeCreame {
@@ -29,17 +30,18 @@
   --color-screen: 0 0% 93%;
 
   /* keys */
-  --color-primary-key: 185 42% 37%;
-  --color-primary-key-shadow: 185 58% 25%;
-  --color-secondary-key: 25 98% 40%;
-  --color-secondary-key-shadow: 25 99% 27%;
-  --color-accent-key: 45 7% 89%;
-  --color-accent-key-shadow: 35 11% 61%;
+  --color-primary-key: 45 7% 89%;
+  --color-primary-key-shadow: 35 11% 61%;
+  --color-secondary-key: 185 42% 37%;
+  --color-secondary-key-shadow: 185 58% 25%;
+  --color-accent-key: 25 98% 40%;
+  --color-accent-key-shadow: 25 99% 27%;
 
   /* text */
-  --color-text1: 60 10% 19%;
-  --color-text2: 0 0% 100%;
-  --color-text2: 0 0% 100%;
+  --color-header-txt: 60 10% 19%;
+  --color-primary-txt: 60 10% 19%;
+  --color-secondary-txt: 0 0% 100%;
+  --color-accent-txt: 0 0% 100%;
 }
 
 .themeViolet {
@@ -49,17 +51,18 @@
   --color-screen: 268 71% 12%;
 
   /* keys */
-  --color-primary-key: 281 89% 26%;
-  --color-primary-key-shadow: 285 91% 52%;
-  --color-secondary-key: 176 100% 44%;
-  --color-secondary-key-shadow: 177 92% 70%;
-  --color-accent-key: 268 47% 21%;
-  --color-accent-key-shadow: 290 70% 36%;
+  --color-primary-key: 268 47% 21%;
+  --color-primary-key-shadow: 290 70% 36%;
+  --color-secondary-key: 281 89% 26%;
+  --color-secondary-key-shadow: 285 91% 52%;
+  --color-accent-key: 176 100% 44%;
+  --color-accent-key-shadow: 177 92% 70%;
 
   /* text */
-  --color-text1: 52 100% 62%;
-  --color-text2: 0 0% 100%;
-  --color-text3: 198 20% 13%;
+  --color-header-txt: 52 100% 62%;
+  --color-primary-txt: 52 100% 62%;
+  --color-secondary-txt: 0 0% 100%;
+  --color-accent-txt: 198 20% 13%;
 }
 
 input[type="number"]::-webkit-inner-spin-button,
@@ -68,4 +71,14 @@ input[type="number"]::-webkit-outer-spin-button {
   -moz-appearance: none;
   appearance: none;
   margin: 0;
+}
+
+.primaryKeyShadow {
+  box-shadow: hsl(var(--color-primary-key-shadow)) 0px -4px 0px inset;
+}
+.secondaryKeyShadow {
+  box-shadow: hsl(var(--color-secondary-key-shadow)) 0px -4px 0px inset;
+}
+.accentKeyShadow {
+  box-shadow: hsl(var(--color-accent-key-shadow)) 0px -4px 0px inset;
 }

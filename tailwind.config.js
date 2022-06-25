@@ -20,9 +20,10 @@ module.exports = {
         accentKey: "hsl(var(--color-accent-key) / <alpha-value>)",
         accentKeyShadow: "hsl(var(--color-accent-key-shadow) / <alpha-value>)",
 
-        text1: "hsl(var(--color-text1) / <alpha-value>)",
-        text2: "hsl(var(--color-text2) / <alpha-value>)",
-        text3: "hsl(var(--color-text3) / <alpha-value>)",
+        headerTxt: "hsl(var(--color-header-txt) / <alpha-value>)",
+        primaryTxt: "hsl(var(--color-primary-txt) / <alpha-value>)",
+        secondaryTxt: "hsl(var(--color-secondary-txt) / <alpha-value>)",
+        accentTxt: "hsl(var(--color-accent-txt) / <alpha-value>)",
       },
     },
   },
