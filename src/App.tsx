@@ -60,6 +60,7 @@ function App() {
           <input
             ref={screenInput}
             type="text"
+            aria-label="screen"
             className="text-[2.5rem] bg-screen text-headerTxt text-right rounded-lg px-5 py-6 w-full outline-none mb-6 md:px-7 md:py-8 md:text-[3.5rem]"
             readOnly
             value={`${state.prev || ""} ${state.curr || ""}`}
