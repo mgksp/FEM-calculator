@@ -4,116 +4,10 @@ import { themes } from "./enums/themes";
 import { keys } from "./keys";
 import { keyVariant } from "./enums/keyVariant";
 import { keyType } from "./enums/keyType";
+import { reducer, ReducerActions } from "./reducer";
 
 function App() {
   const [selectedTheme, setSelectedTheme] = useState<themes>(themes.darkBlue);
-
-  enum ReducerActions {
-    NUM = "NUM",
-    OP = "OP",
-    RESET = "RESET",
-    DELETE = "DELETE",
-    CALC = "CALC",
-  }
-
-  interface ReducerState {
-    prev: string | null;
-    op?: string | null;
-    curr: string | null;
-  }
-
-  interface ReducerAction {
-    type: ReducerActions;
-    payload?: string;
-  }
-
-  const reducer = (
-    state: ReducerState,
-    { type, payload }: ReducerAction
-  ): ReducerState => {
-    switch (type) {
-      case ReducerActions.NUM:
-        if (payload === "0" && state.curr === "0") return state;
-        if (payload === "." && state.curr!.includes(".")) return state;
-        return {
-          ...state,
-          curr: `${state.curr || ""}${payload}`,
-        };
-
-      case ReducerActions.OP:
-        if (state.curr === null && state.prev === null) return state;
-        if (state.curr === null) {
-          return {
-            ...state,
-            prev: `${state.prev?.slice(0, -1)}${payload}`,
-            op: payload,
-          };
-        }
-        if (state.prev === null) {
-          return {
-            ...state,
-            prev: `${state.curr} ${payload}`,
-            op: payload,
-            curr: null,
-          };
-        }
-        if (payload === "=") {
-          return {
-            ...state,
-            prev: null,
-            op: null,
-            curr: calculate(state),
-          };
-        }
-        return {
-          ...state,
-          prev: `${calculate(state)} ${payload}`,
-          op: payload,
-          curr: null,
-        };
-
-      case ReducerActions.DELETE:
-        return {
-          ...state,
-          curr: state.curr?.slice(0, -1) || null,
-        };
-
-      case ReducerActions.RESET:
-        return {
-          curr: null,
-          prev: null,
-        };
-
-      default:
-        return state;
-    }
-  };
-
-  const calculate = ({ curr, op, prev }: ReducerState) => {
-    const num1 = parseFloat(prev!);
-    const num2 = parseFloat(curr!);
-
-    if (isNaN(num1) || isNaN(num2)) return "";
-
-    let result = 0;
-
-    switch (op) {
-      case "+":
-        result = num1 + num2;
-        break;
-      case "-":
-        result = num1 - num2;
-        break;
-      case "x":
-        result = num1 * num2;
-        break;
-      case "/":
-        result = num1 / num2;
-        break;
-    }
-
-    return result.toString();
-  };
 
   const [state, dispatch] = useReducer(reducer, { curr: null, prev: null });
 
@@ -184,33 +78,28 @@ function App() {
                 "bg-accentKey accentKeyShadow text-accentTxt text-xl md:text-[1.75rem]";
             }
 
-            let handleClick = () => {};
-            if (key.keyType === keyType.NUM) {
-              handleClick = () => {
-                screenInput.current!.scrollLeft =
-                  screenInput.current!.scrollWidth;
+            let handleClick = (type: keyType) => {
+              screenInput.current!.scrollLeft =
+                screenInput.current!.scrollWidth;
+              if (type === keyType.NUM) {
                 dispatch({
                   type: ReducerActions.NUM,
                   payload: key.value.toString(),
                 });
-              };
-            }
-            if (key.keyType === keyType.OP) {
-              handleClick = () => {
-                screenInput.current!.scrollLeft =
-                  screenInput.current!.scrollWidth;
+              }
+              if (type === keyType.OP) {
                 dispatch({
                   type: ReducerActions.OP,
                   payload: key.value.toString(),
                 });
-              };
-            }
-            if (key.keyType === keyType.DELETE) {
-              handleClick = () => dispatch({ type: ReducerActions.DELETE });
-            }
-            if (key.keyType === keyType.RESET) {
-              handleClick = () => dispatch({ type: ReducerActions.RESET });
-            }
+              }
+              if (type === keyType.DELETE) {
+                dispatch({ type: ReducerActions.DELETE });
+              }
+              if (type === keyType.RESET) {
+                dispatch({ type: ReducerActions.RESET });
+              }
+            };
 
             return (
               <button
@@ -218,7 +107,7 @@ function App() {
                 className={`h-16 grid place-content-center cursor-pointer rounded ${keyVariantStyle} ${
                   key.colSpan ? "col-span-2" : ""
                 } md:rounded-lg`}
-                onClick={handleClick}
+                onClick={() => handleClick(key.keyType)}
               >
                 {key.value.toString()}
               </button>
