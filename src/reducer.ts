@@ -24,7 +24,15 @@ export const reducer = (
   switch (type) {
     case ReducerActions.NUM:
       if (payload === "0" && state.curr === "0") return state;
-      if (payload === "." && state.curr!.includes(".")) return state;
+
+      if (payload === "." && (state.curr === null || state.curr === "")) {
+        return {
+          ...state,
+          curr: `0${payload}`,
+        };
+      }
+      if (payload === "." && state.curr?.includes(".")) return state;
+
       return {
         ...state,
         curr: `${state.curr || ""}${payload}`,
